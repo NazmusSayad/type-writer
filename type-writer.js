@@ -1,68 +1,67 @@
 const TypeWriter = function (target, data, options) {
-   this.target = target
-   this.data = data.map((str) => str.trim())
-   this.isRunning = null
-   this.stats = {}
-   this.options = {
-      writeSpeed: 85,
-      clearSpeed: 50,
-      writeAfter: 150,
-      clearAfter: 1500,
-      superAccurate: false,
-   }
-   Object.assign(this.options, options)
-}
+  this.target = target;
+  this.data = data.map(str => str.trim());
+  this.isRunning = null;
+  this.stats = {};
+  this.options = {
+    writeSpeed: 85,
+    clearSpeed: 50,
+    writeAfter: 150,
+    clearAfter: 1500,
+    superAccurate: false,
+  };
+  Object.assign(this.options, options);
+};
 TypeWriter.prototype.start = function () {
-   if (this.isRunning) return true
-   if (this.isRunning == null) {
-      this.stats.indElement = 0
-      this.stats.ind = 0
-   }
-   if (!this.isRunning) this.isRunning = true
+  if (this.isRunning) return true;
+  if (this.isRunning == null) {
+    this.stats.indElement = 0;
+    this.stats.ind = 0;
+  }
+  if (!this.isRunning) this.isRunning = true;
 
-   // Current operation text
-   
-   const write = () => {
-      if (!this.isRunning) return
-      
-      let text = this.data[this.stats.indElement]
-      const letter = text[this.stats.ind] // Current operation letter
-      if (letter !== undefined) {
-         this.stats.ind++
-         this.target.append(letter)
-         return setTimeout(write, this.options.writeSpeed)
-      }
+  // Current operation text
+  const clear = () => {
+    if (!this.isRunning) return;
 
-      setTimeout(clear, this.options.clearAfter)
-   }
+    const lastChild = this.target.lastChild;
 
-   const clear = () => {
-      if (!this.isRunning) return
+    if (lastChild !== null) {
+      lastChild.remove();
+      return setTimeout(clear, this.options.clearSpeed);
+    }
 
-      const lastChild = this.target.lastChild
+    if (this.stats.indElement < this.data.length - 1) this.stats.indElement++;
+    else this.stats.indElement = 0;
 
-      if (lastChild !== null) {
-         lastChild.remove()
-         return setTimeout(clear, this.options.clearSpeed)
-      }
+    this.stats.ind = 0;
 
-      if (this.stats.indElement < this.data.length - 1) this.stats.indElement++
-      else this.stats.indElement = 0
+    setTimeout(write, this.options.writeAfter);
+  };
 
-      this.stats.ind = 0
+  const write = () => {
+    if (!this.isRunning) return;
 
-      setTimeout(write, this.options.writeAfter)
-   }
+    let text = this.data[this.stats.indElement];
+    const letter = text[this.stats.ind]; // Current operation letter
+    if (letter !== undefined) {
+      this.stats.ind++;
+      this.target.append(letter);
+      return setTimeout(write, this.options.writeSpeed);
+    }
 
-   write()
-}
+    setTimeout(clear, this.options.clearAfter);
+  };
+
+  write();
+};
 TypeWriter.prototype.stop = function () {
-   this.isRunning = false
-}
+  this.isRunning = false;
+};
 TypeWriter.prototype.reset = function () {
-   this.target.innerHTML = ""
-   this.isRunning = null
-   this.stats = {}
-}
+  this.target.innerHTML = '';
+  this.isRunning = null;
+  this.stats = {};
+};
 
 // export default TypeWriter
