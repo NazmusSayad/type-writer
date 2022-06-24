@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <link rel="stylesheet" href="style.css">
+      <script src="./script.js"></script>
+   </head>
+   <body>
+      <h1><i></i> Hello, I am <span id="text"></span><i></i></h1>
+
+      <script>
+         const target = document.querySelector(`#text`)
+         const list = ["Nazmus Sayad.", "a Developer.", "a crazy Boy."]
+         const options = {
+            // writeSpeed: 75,
+            // clearSpeed: 50,
+            // writeAfter: 150,
+            // clearAfter: 1500,
+            // superAccurate: false,
+         }
+
+         const typer = new TypeWriter(target, list, options)
+         typer.start()
+      </script>
+   </body>
+</html>

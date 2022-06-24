@@ -1,0 +1,22 @@
+i {
+   display: inline-block;
+   height: 1em;
+   width: 2px;
+   background: red;
+   margin-bottom: -0.16em;
+   animation-name: caret;
+   animation-iteration-count: infinite;
+   animation-duration: 0.85s;
+}
+
+@keyframes caret {
+   0% {
+      opacity: 0;
+   }
+   50% {
+      opacity: 1;
+   }
+   100% {
+      opacity: 0;
+   }
+}
