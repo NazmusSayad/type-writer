@@ -1,13 +1,4 @@
-i {
-   display: inline-block;
-   height: 1em;
-   width: 2px;
-   background: red;
-   margin-bottom: -0.16em;
-   animation-name: caret;
-   animation-iteration-count: infinite;
-   animation-duration: 0.85s;
-}
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;1,400;1,500&display=swap");
 
 @keyframes caret {
    0% {
@@ -19,4 +10,28 @@ i {
    100% {
       opacity: 0;
    }
+}
+
+body {
+   background: #f1f2f3;
+   color: #212223;
+   text-align: center;
+   font-family: "Rubik", sans-serif;
+}
+
+h1 {
+   margin-top: calc(45vh - 0.5em);
+   font-size: 3rem;
+   font-weight: 500;
+}
+
+i {
+   display: inline-block;
+   height: 1em;
+   width: 2px;
+   background: coral;
+   margin-bottom: -0.15em;
+   animation-name: caret;
+   animation-iteration-count: infinite;
+   animation-duration: 0.85s;
 }

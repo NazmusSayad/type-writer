@@ -4,10 +4,10 @@ const TypeWriter = function (target, data, options) {
    this.isRunning = null
    this.stats = {}
    this.options = {
-      writeSpeed: 75,
+      writeSpeed: 85,
       clearSpeed: 50,
-      writeAfter: 125,
-      clearAfter: 1250,
+      writeAfter: 150,
+      clearAfter: 1500,
       superAccurate: false,
    }
    Object.assign(this.options, options)
