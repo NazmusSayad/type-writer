@@ -33,7 +33,7 @@ TypeWriter.prototype.start = function () {
          return setTimeout(write, this.options.writeSpeed)
       }
 
-      /*       let clearAfter = this.options.clearAfter
+      /*   let clearAfter = this.options.clearAfter
       if (this.options.superAccurate) {
          //  remove the extra loop time
          clearAfter -= this.options.writeSpeed
@@ -46,6 +46,7 @@ TypeWriter.prototype.start = function () {
       if (!this.isRunning) return
 
       const lastChild = this.target.lastChild
+
       if (lastChild !== null) {
          lastChild.remove()
          return setTimeout(clear, this.options.clearSpeed)
@@ -57,7 +58,7 @@ TypeWriter.prototype.start = function () {
       text = this.data[this.stats.indElement]
       this.stats.ind = 0
 
-      /*       let writeAfter = this.options.writeAfter
+      /*   let writeAfter = this.options.writeAfter
       if (this.options.superAccurate) {
          //  remove the extra loop time
          writeAfter -= this.options.clearSpeed
@@ -66,11 +67,7 @@ TypeWriter.prototype.start = function () {
       setTimeout(write, this.options.writeAfter)
    }
 
-   if (text[this.stats.ind]) {
-      write()
-   } else {
-      clear()
-   }
+   write()
 }
 TypeWriter.prototype.stop = function () {
    this.isRunning = false
