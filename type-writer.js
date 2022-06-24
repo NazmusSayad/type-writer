@@ -21,11 +21,11 @@ TypeWriter.prototype.start = function () {
    if (!this.isRunning) this.isRunning = true
 
    // Current operation text
-   let text = this.data[this.stats.indElement]
-
+   
    const write = () => {
       if (!this.isRunning) return
-
+      
+      let text = this.data[this.stats.indElement]
       const letter = text[this.stats.ind] // Current operation letter
       if (letter !== undefined) {
          this.stats.ind++
@@ -33,12 +33,6 @@ TypeWriter.prototype.start = function () {
          return setTimeout(write, this.options.writeSpeed)
       }
 
-      /*   let clearAfter = this.options.clearAfter
-      if (this.options.superAccurate) {
-         //  remove the extra loop time
-         clearAfter -= this.options.writeSpeed
-         clearAfter = clearAfter < 0 ? 0 : clearAfter
-      } */
       setTimeout(clear, this.options.clearAfter)
    }
 
@@ -55,15 +49,8 @@ TypeWriter.prototype.start = function () {
       if (this.stats.indElement < this.data.length - 1) this.stats.indElement++
       else this.stats.indElement = 0
 
-      text = this.data[this.stats.indElement]
       this.stats.ind = 0
 
-      /*   let writeAfter = this.options.writeAfter
-      if (this.options.superAccurate) {
-         //  remove the extra loop time
-         writeAfter -= this.options.clearSpeed
-         writeAfter = writeAfter < 0 ? 0 : writeAfter
-      } */
       setTimeout(write, this.options.writeAfter)
    }
 
