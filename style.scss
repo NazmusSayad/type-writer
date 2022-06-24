@@ -12,26 +12,37 @@
    }
 }
 
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
 body {
    background: #f1f2f3;
-   color: #212223;
-   text-align: center;
+   color: #313233;
+   text-align: left;
    font-family: "Rubik", sans-serif;
 }
 
-h1 {
-   margin-top: calc(45vh - 0.5em);
-   font-size: 3rem;
-   font-weight: 500;
-}
+#hero {
+   min-height: 100vh;
+   padding: 0 5vw;
 
-i {
-   display: inline-block;
-   height: 1em;
-   width: 2px;
-   background: coral;
-   margin-bottom: -0.15em;
-   animation-name: caret;
-   animation-iteration-count: infinite;
-   animation-duration: 0.85s;
+   h1 {
+      margin-top: calc(45vh - 0.5em);
+      font-size: clamp(2.5rem, 6vw, 6rem);
+      font-weight: 500;
+   }
+
+   i {
+      display: inline-block;
+      height: 1em;
+      width: 2px;
+      background: coral;
+      margin-bottom: -0.15em;
+      animation-name: caret;
+      animation-iteration-count: infinite;
+      animation-duration: 0.85s;
+   }
 }
